@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>My Project</h1>
+        <nav>
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#details">Details</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="overview">
+        <h2>Project Overview</h2>
+        <p>This is a brief overview of the project.</p>
+    </section>
+
+    <section id="details">
+        <h2>Project Details</h2>
+        <p>Here are the details of the project.</p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Information</h2>
+        <p>You can contact us at
+            <a href="mailto:
+            <script>
+                document.write('info' + '@' + 'kekeliakakpotamekloe@gmail.com');
+            </script>
+            ">
+            </a>.
+        </p>
+    </section>  
+    <footer>
+        <p>&copy; 2024 My Project</p>
+    </footer>
+    <script src="scripts.js"></script>
+    <audio id="background-music" loop>
+        <source src="background-music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <script>
+        $(document).ready(function() {
+    // Play background music
+    var music = document.getElementById("background-music");
+    music.volume = 0.5; // Set volume to 50%
+    music.play();
+
+    // GSAP animation for header
+    gsap.from("header", {
+        duration: 1,
+        y: -100,
+        opacity: 0,
+        ease: "bounce"
+    });
+
+    // Smooth scrolling for navigation links
+    $("nav a").on('click', function(event) {
+        if (this.hash !== "") {
+            event.preventDefault();
+            var hash = this.hash;
+            $('html, body').animate({
+                scrollTop: $(hash).offset().top
+            }, 800, function() {
+                                window.location.hash = hash;
+            });
+        }
+    });
+});
